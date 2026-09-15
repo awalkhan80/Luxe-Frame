@@ -7,85 +7,91 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Our Work', href: '#portfolio' },
-    { name: 'Equipment', href: '#equipment' },
-    { name: 'About Us', href: '#about' },
+    { name: 'Portfolio', href: '#portfolio' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <header className="bg-[#0a0a0a]/95 backdrop-blur-md text-white border-b border-white/10 sticky top-0 z-50">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-4">
-        {/* Top Row */}
-        <div className="flex justify-between items-center mb-6">
-          <a href="#home" className="flex flex-col z-50 group">
-            <img 
-              src="https://raw.githubusercontent.com/awalkhan80/Luxe-Frame/main/luxe_frame_logo.png" 
-              alt="Luxe Frame Productions" 
-              className="h-24 md:h-32 object-contain group-hover:opacity-80 transition-opacity"
-            />
-            <span className="text-[0.55rem] md:text-[0.65rem] font-bold tracking-[0.25em] text-white/50 uppercase mt-2 text-center md:text-left">
-              Ideas | People | Places | Impact
-            </span>
-          </a>
+    <header className="bg-[#0a0a0a]/95 backdrop-blur-md text-white border-b border-white/[0.08] sticky top-0 z-50 transition-colors duration-200">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-3 md:py-4 flex items-center justify-between">
+        {/* 1. Logo with image and tagline */}
+        <a 
+          href="#home" 
+          className="flex flex-col justify-center items-start group focus:outline-none"
+          aria-label="Luxe Frame Production L.L.C - Home"
+        >
+          <img 
+            src="https://raw.githubusercontent.com/awalkhan80/Luxe-Frame/main/luxe_frame_logo.png" 
+            alt="Luxe Frame Productions" 
+            className="h-16 sm:h-20 md:h-24 max-w-[200px] sm:max-w-[240px] md:max-w-[280px] object-contain object-left group-hover:opacity-90 transition-opacity duration-200"
+          />
+          <span className="text-[9px] sm:text-[10px] md:text-[10.5px] font-bold tracking-[0.25em] text-white/60 uppercase mt-1 leading-none text-left">
+            Ideas | People | Places | Impact
+          </span>
+        </a>
 
-          {/* Right Text blocks */}
-          <div className="hidden lg:flex gap-12 text-[10px] font-bold tracking-[0.2em] text-right uppercase leading-loose">
-            <div className="text-white/80">
-              Film <br /> Beyond <br /> Borders
-            </div>
-            <div className="text-primary/80 border-l border-white/10 pl-8">
-              Dubai <br /> Abu Dhabi <br /> Worldwide
-            </div>
-          </div>
+        {/* 2. Desktop Navigation */}
+        <nav 
+          className="hidden md:flex items-center gap-7 lg:gap-9"
+          aria-label="Main Navigation"
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-[13px] lg:text-[14px] font-medium tracking-[0.14em] uppercase text-white/70 hover:text-white transition-colors duration-200 py-1 relative group"
+            >
+              {link.name}
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 ease-out" />
+            </a>
+          ))}
+        </nav>
 
-          <button
-            className="lg:hidden z-50 text-white hover:text-primary p-2 transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Bottom Row */}
-        <div className="hidden lg:flex justify-between items-center pt-4 border-t border-white/10">
-          <nav className="flex gap-8 text-[11px] font-bold tracking-[0.15em] uppercase">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-white/80 hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary pb-1"
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
+        {/* 3. Desktop CTA Button */}
+        <div className="hidden md:flex items-center">
           <a
             href="#contact"
-            className="bg-primary hover:bg-white text-black px-8 py-3 text-[11px] font-bold tracking-[0.2em] uppercase transition-all shadow-[0_0_15px_rgba(212,175,55,0.2)] hover:shadow-white/20 flex items-center gap-2"
+            className="text-[12px] lg:text-[13px] font-medium tracking-[0.16em] uppercase px-5 py-2.5 border border-primary/50 text-white hover:text-primary hover:border-primary hover:bg-primary/[0.06] transition-all duration-300 rounded-none whitespace-nowrap focus:outline-none focus:ring-1 focus:ring-primary"
           >
-            Get A Quote &rarr;
+            Start A Project
           </a>
         </div>
+
+        {/* 4. Mobile Menu Button */}
+        <button
+          type="button"
+          className="md:hidden text-white/90 hover:text-white p-2 -mr-2 focus:outline-none transition-colors"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? (
+            <X size={22} strokeWidth={1.75} />
+          ) : (
+            <Menu size={22} strokeWidth={1.75} />
+          )}
+        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* 5. Mobile Navigation Dropdown */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#121212] border-t border-white/10 overflow-hidden"
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden bg-[#0d0d0d] border-b border-white/[0.08] overflow-hidden shadow-2xl"
           >
-            <nav className="flex flex-col items-center gap-6 py-8">
+            <nav className="flex flex-col items-center gap-5 px-6 pt-6 pb-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-bold tracking-[0.15em] uppercase text-white/90 hover:text-primary transition-colors"
+                  className="text-[16px] font-medium tracking-[0.15em] uppercase text-white/80 hover:text-white active:text-primary transition-colors py-1"
                 >
                   {link.name}
                 </a>
@@ -93,9 +99,9 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="bg-primary text-black px-8 py-3 text-xs font-bold tracking-[0.2em] uppercase mt-4 hover:bg-white transition-colors"
+                className="w-full max-w-[240px] text-center text-[13px] font-medium tracking-[0.16em] uppercase px-6 py-3 border border-primary/50 text-primary hover:bg-primary hover:text-black transition-all duration-300 mt-3"
               >
-                Get A Quote &rarr;
+                Start A Project
               </a>
             </nav>
           </motion.div>
