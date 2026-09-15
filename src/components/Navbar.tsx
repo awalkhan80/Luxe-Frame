@@ -21,10 +21,13 @@ export default function Navbar() {
         <div className="flex justify-between items-center mb-6">
           <a href="#home" className="flex flex-col z-50 group">
             <img 
-              src="/LUXE FRAME PRODUCTION LOGO.png" 
+              src="https://raw.githubusercontent.com/awalkhan80/Luxe-Frame/main/luxe_frame_logo.png" 
               alt="Luxe Frame Productions" 
-              className="h-16 md:h-20 object-contain group-hover:opacity-80 transition-opacity"
+              className="h-24 md:h-32 object-contain group-hover:opacity-80 transition-opacity"
             />
+            <span className="text-[0.55rem] md:text-[0.65rem] font-bold tracking-[0.25em] text-white/50 uppercase mt-2 text-center md:text-left">
+              Ideas | People | Places | Impact
+            </span>
           </a>
 
           {/* Right Text blocks */}

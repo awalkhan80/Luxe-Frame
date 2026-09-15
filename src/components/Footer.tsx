@@ -9,10 +9,13 @@ export default function Footer() {
         {/* Logo and Location */}
         <div className="flex flex-col items-center md:items-start">
           <img 
-            src="/LUXE FRAME PRODUCTION LOGO.png" 
+            src="https://raw.githubusercontent.com/awalkhan80/Luxe-Frame/main/luxe_frame_logo.png" 
             alt="Luxe Frame Productions" 
-            className="h-16 md:h-20 object-contain mb-4"
+            className="h-24 md:h-32 object-contain mb-2"
           />
+          <span className="text-[0.55rem] md:text-[0.65rem] font-bold tracking-[0.25em] text-white/50 uppercase mb-4 text-center md:text-left">
+            Ideas | People | Places | Impact
+          </span>
           <p className="text-[11px] font-bold text-primary tracking-[0.2em] uppercase mb-4">
             Dubai, United Arab Emirates
           </p>
