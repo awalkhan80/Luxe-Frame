@@ -1,0 +1,8 @@
+{
+  "name": "Luxe Frame Production L.L.C",
+  "description": "Dubai-based professional production company providing premium video production and visual content services for brands, businesses, events, and creative projects.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
